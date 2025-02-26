@@ -1,2 +1,0 @@
-# -Checkpoint
-Group project.
