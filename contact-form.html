@@ -5,51 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Lunar Leap</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #00d4ff;
+            --secondary: #7000ff;
+            --dark: #121212;
+            --light: #f0f0f0;
+            --card-bg: rgba(18, 18, 24, 0.8);
+            --accent: #ff00aa;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark), #1e1e2e);
+            color: var(--light);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .form-container {
-            background: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-container {
+            background: rgba(25, 25, 35, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 212, 255, 0.2);
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
         .form-container h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
+            margin-bottom: 25px;
+            font-size: 28px;
             text-align: center;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            position: relative;
         }
+        
+        .form-container h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
         .form-container label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: normal;
+            color: var(--primary);
+            letter-spacing: 0.5px;
         }
+        
         .form-container input,
-        .form-container textarea,
+        .form-container textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .form-container input:focus,
+        .form-container textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.3);
+        }
+        
         .form-container button {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-container button {
-            background-color: #007BFF;
-            color: #fff;
+            padding: 12px;
+            margin-top: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
             border: none;
+            border-radius: 8px;
+            font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
         }
+        
         .form-container button:hover {
-            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        .form-container button:active {
+            transform: translateY(0);
+        }
+        
+        /* Placeholder styling */
+        ::placeholder {
+            color: rgba(240, 240, 240, 0.6);
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+        }
+        
+        .form-container button {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
