@@ -5,44 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscription Confirmation - Lunar Leap</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #00d4ff;
+            --secondary: #7000ff;
+            --dark: #121212;
+            --light: #f0f0f0;
+            --card-bg: rgba(18, 18, 24, 0.8);
+            --accent: #ff00aa;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark), #1e1e2e);
+            color: var(--light);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .confirmation-container {
-            background: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .confirmation-container {
+            background: rgba(25, 25, 35, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 212, 255, 0.2);
             text-align: center;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .confirmation-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
         .confirmation-container h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            position: relative;
         }
+        
+        .confirmation-container h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
         .confirmation-container p {
             font-size: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--light);
         }
+        
         .confirmation-container a {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-weight: bold;
             font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            letter-spacing: 0.5px;
         }
+        
         .confirmation-container a:hover {
-            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        /* Success icon */
+        .icon-success {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            position: relative;
+            animation: glow 2s infinite alternate;
+        }
+        
+        .icon-success::before,
+        .icon-success::after {
+            content: '';
+            position: absolute;
+            background-color: var(--primary);
+        }
+        
+        .icon-success::before {
+            width: 3px;
+            height: 30px;
+            top: 50%;
+            left: 24px;
+            transform: translateY(-10px) rotate(-45deg);
+        }
+        
+        .icon-success::after {
+            width: 3px;
+            height: 15px;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-2px) rotate(45deg);
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+            }
         }
     </style>
 </head>
