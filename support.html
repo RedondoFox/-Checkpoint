@@ -267,6 +267,35 @@
       .card:first-child:hover::before {
           opacity: 0.8;
       }
+
+      /* Contact button */
+      .contact-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 3rem;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--light);
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .login-btn {
+            border: 1px solid var(--light);
+            border-radius: 4px;
+        }
   </style>
 </head>
 <body>
@@ -295,6 +324,7 @@
                   <li><a href="#">Data</a></li>
                 </ul>
               </li>
+              <li><a href="#" class="login-btn">LOG IN</a></li>
             </ul>
           </nav>
     </header>
