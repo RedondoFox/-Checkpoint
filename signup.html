@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Questrial&display=swap" rel="stylesheet">
+    <title>Sign Up / Login Page</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        }
+
+
+    body { 
+    min-height: 100vh;
+    background-color: #030103; /* Taustaväri */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    overflow-x: hidden;
+    }
+
+    h1 {
+    padding-top: 150px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0px;
+    padding-bottom: 10px;
+    color: aliceblue;
+    position: relative;
+    z-index: 1;
+    }
+
+    form {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        max-width: 400px;
+        width: 100%;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    form.hidden {
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    form.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .form-container {
+        position: relative;
+        z-index: 1;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: aliceblue;
+    }
+
+    input {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #ff5d40;
+        box-shadow: 0 0 0 3px rgba(255, 93, 64, 0.2);
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #ff5d40, #ff9162);
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(255, 93, 64, 0.4);
+    }
+
+    .toggle-link {
+        text-align: center;
+        margin-top: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+    }
+
+    .toggle-link a {
+        color: #ff5d40;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .toggle-link a:hover {
+        color: #ff9162;
+        text-decoration: underline;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        justify-content: center;
+        width: 100%;
+        z-index: 1;
+        padding-bottom: 2rem;
+    }
+
+    /* Footer styles */
+    footer {
+        width: 100%;
+        background: transparent;
+        padding: 0;
+        margin-top: 0;
+        border-top: none;
+        position: relative;
+        z-index: 10;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        display: none;
+        background: transparent;
+        top: 0px;
+        left: 0;
+        right: 0;
+        height: 0px;
+        background: linear-gradient(180deg, 
+            rgba(3, 1, 3, 0.4) 0%, 
+            rgba(3, 1, 3, 0.7) 50%, 
+            rgba(3, 1, 3, 0.85) 100%);
+        pointer-events: none;
+    }
+
+    #footer {
+        max-width: 1200px;
+        margin: 2rem auto 0 auto;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1.2fr;
+        gap: 2rem;
+        position: relative;
+        background: linear-gradient(180deg, 
+            rgba(3, 1, 3, 0.4) 0%, 
+            rgba(3, 1, 3, 0.7) 50%, 
+            rgba(3, 1, 3, 0.85) 100%);
+        border-radius: 20px;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .col h3 {
+        color: aliceblue;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 1px;
+    }
+
+    .col p {
+        color: rgba(240, 240, 240, 0.7);
+        margin-bottom: 0.75rem;
+        cursor: pointer;
+        transition: color 0.3s ease, transform 0.2s ease;
+        font-size: 0.9rem;
+    }
+
+    .col p:hover {
+        color: #ff5d40;
+        transform: translateX(5px);
+    }
+
+    .social {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .social img {
+        width: 28px;
+        height: 28px;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        filter: brightness(0.9);
+    }
+
+    .social img:hover {
+        transform: scale(1.2) rotate(5deg);
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 93, 64, 0.5));
+    }
+
+    .card {
+        display: none;
+    }
+
+    /* Compact Newsletter section */
+    .newsletter-compact {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .newsletter-compact h3 {
+        color: aliceblue;
+        margin-bottom: 0.3rem;
+        font-size: 1.2rem;
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 1px;
+    }
+
+    .newsletter-form-compact {
+        display: flex;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    .newsletter-form-compact input[type="email"] {
+        flex: 1;
+        padding: 0.6rem 0.8rem;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-form-compact input[type="email"]:focus {
+        outline: none;
+        border-color: #ff5d40;
+        box-shadow: 0 0 0 2px rgba(255, 93, 64, 0.2);
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .newsletter-form-compact button {
+        width: auto;
+        padding: 0.6rem 1.2rem;
+        margin-top: 0;
+        border: none;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #ff5d40, #ff9162);
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        line-height: 1;
+    }
+
+    .newsletter-form-compact button:hover {
+        transform: translateX(3px);
+        box-shadow: 0 3px 15px rgba(255, 93, 64, 0.4);
+    }
+
+    @media (max-width: 768px) {
+        #footer {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .social {
+            justify-content: center;
+        }
+
+        .col p:hover {
+            transform: translateX(0);
+        }
+
+        .newsletter-compact {
+            text-align: left;
+        }
+    }
+
+    /* Animoitu taustaelementti */
+    .blob-outer-container {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        inset: 0;
+        margin: auto;
+        filter: blur(100px);
+    }
+
+    .blob-inner-container {
+        border-radius: 1000px;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 100vw;
+        height: 100vh;
+        min-width: 1000px;
+        overflow: hidden;
+        transform: scale(1);
+    }
+
+    .blob {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        inset: 0;
+        margin: auto;
+        background: conic-gradient(from 0deg, 
+        #b84430, 
+        hsla(9, 58%, 26%, 0.999),
+        #ff9162b1,
+        #6b3b27,
+        hwb(24 5% 82%),
+        #386264,
+        hsla(179, 60%, 22%, 0.617),
+        #011c30); 
+       
+        animation: spinBlob 17s linear infinite;
+    }
+
+    @keyframes spinBlob {
+        0% { 
+            transform: rotate(0deg) scale(1);
+        }
+
+        100% {
+            transform: rotate(1turn);
+        }
+    }
+
+    /* taustan liukuvärianimaation tyylittelyt loppuu */
+
+    /* RESPONSIIVISUUS */  
+
+    @media screen and (min-width: 894px) {
+        div.headline {
+            font-size: 60px;
+        }
+    }
+    
+    /* If the screen size is 893px wide or less, set the font-size of <div> to 30px */
+    @media screen and (max-width: 893px) {
+        div.headline {
+            font-size: 7vw;
+        }
+    }
+
+    @media screen and (min-width: 894px) {
+        div.headline-h2 {
+            font-size: 30px;
+        }
+    }
+    
+    @media screen and (max-width: 893px) {
+        div.headline-h2 {
+            font-size: 3vw;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Animoitu taustaelementti -->
+    <div class="blob-outer-container">
+        <div class="blob-inner-container">
+            <div class="blob"></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1 id="form-title">Sign Up</h1>
+        
+        <div class="form-container">
+            <!-- Rekisteröitymisformi -->
+            <form id="signup-form" class="active" action="/submit-signup" method="POST">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" required>
+
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+
+                <button type="submit">Sign Up</button>
+                
+                <div class="toggle-link">
+                    Already have an account? <a onclick="toggleForms()">Login here</a>
+                </div>
+            </form>
+
+            <!-- Sisäänkirjautumisformi -->
+            <form id="login-form" class="hidden" action="/submit-login" method="POST">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required>
+
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <button type="submit">Login</button>
+                
+                <div class="toggle-link">
+                    Don't have an account? <a onclick="toggleForms()">Sign up here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="col col1">
+                <h3>Lunar Leap</h3>
+                <div class="social">
+                    <a href="https://codepen.io/LunarLeap" target="_blank" class="link">
+                        <img src="https://assets.codepen.io/9051928/codepen_1.png" alt="CodePen" />
+                    </a>
+                    <a href="https://twitter.com/LunarLeap" target="_blank" class="link">
+                        <img src="https://assets.codepen.io/9051928/x.png" alt="X" />
+                    </a>
+                    <a href="https://youtube.com/@LunarLeap" target="_blank" class="link">
+                        <img src="https://assets.codepen.io/9051928/youtube_1.png" alt="YouTube" />
+                    </a>
+                </div>
+                <p style="color: #818181; font-size: smaller">2025 © All Rights Reserved</p>
+            </div>
+            <div class="col col2">
+                <p>About</p>
+                <p>Our mission</p>
+                <p>Privacy Policy</p>
+                <p>Terms of service</p>
+                <p>Buy us a coffee!</p>
+            </div>
+            <div class="col col3">
+                <p>Services</p>
+                <p>Products</p>
+                <p>Join our team</p>
+                <p>Partner with us</p>
+            </div>
+            <div class="col col4 newsletter-compact">
+                <h3>Subscribe for more tips and updates!</h3>
+                <form class="newsletter-form-compact" action="/subscribe" method="POST">
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <button type="submit">→</button>
+                </form>
+            </div>
+        </footer>
+
+    <script>
+        function toggleForms() {
+            const signupForm = document.getElementById('signup-form');
+            const loginForm = document.getElementById('login-form');
+            const formTitle = document.getElementById('form-title');
+
+            if (signupForm.classList.contains('active')) {
+                // Vaihda login-formiin
+                signupForm.classList.remove('active');
+                signupForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                loginForm.classList.add('active');
+                formTitle.textContent = 'Login';
+            } else {
+                // Vaihda signup-formiin
+                loginForm.classList.remove('active');
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                signupForm.classList.add('active');
+                formTitle.textContent = 'Sign Up';
+            }
+        }
+    </script>
+</body>
+</html>
