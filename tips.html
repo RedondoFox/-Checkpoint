@@ -17,7 +17,17 @@
     <header>
 
       <nav> 
-   
+
+        <div class="topright">
+          
+          <div class="texttopright" id="topright"> 
+            Find balance in your space — get started now. <br><br>
+            <button class="leapin"><a href="indexSO.html">Leap in!</a></button>
+          
+          </div>
+
+        </div>
+  
     </nav>
 
 
@@ -82,11 +92,16 @@
               <p> Productivity is a process. Review your progress weekly to reflect on accomplishments and identify bottlenecks. Don't be afraid to delete tasks that are no longer relevant or delegate items someone else can handle. Finally, minimize distractions by silencing notifications and optimizing your workspace to dramatically improve your deep work capability.
               By combining the clarity of a structured list with these actionable methods, you ensure your productivity is both high-impact and sustainable.</p> 
         </div>
+        
+
+        <div class="grid-item">  
+          
+          <h3> The To-Do List as an Anti-Stress Tool </h3>
+        
+          <h4>Lo <br> <br>
+             <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem odit hic cum reiciendis temporibus corrupti! Repellendus non quidem ipsa quas ducimus veritatis laborum excepturi cum totam esse in praesentium est maiores, ad, fugit assumenda exercitationem! Tenetur aliquam corporis amet odio enim quaerat impedit nihil iure dignissimos a, velit provident magni voluptatem debitis exercitationem voluptatum vero est cumque ut, nostrum eos ducimus! Labore quod quisquam itaque eum recusandae nesciunt illum quas, blanditiis repudiandae ipsa deserunt odio, placeat magnam quis illo natus perspiciatis eveniet quo facilis! Modi nesciunt accusamus nostrum. Officiis, reiciendis?</p>
         </div>
-
-
-
-
+      </div>
      
    <!-- Liukuvärianimaatio -->
       <div class="blob-outer-container"> 
@@ -132,11 +147,26 @@
 
 
 
-    
- <script>
+    <script>
+      let lastScrollTop = 0;
+      const topright = document.getElementById('topright');
+      
+      window.addEventListener('scroll', () => {
+          let st = window.pageYOffset || document.documentElement.scrollTop;
+          if (st > lastScrollTop){
+              // scrolling down
+              topright.style.transform = "translateY(-150%)";
+              topright.style.transition = "transform 0.3s ease";
+          } else {
+              // scrolling up
+              topright.style.transform = "translateY(0)";
+          }
+          lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+      });
 
 
+      </script>
 
-</script>
+      
 </body>
 </html>

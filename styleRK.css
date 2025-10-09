@@ -17,7 +17,7 @@ h1 {
     font-weight: 400;
     letter-spacing: 0px;
     padding-bottom: 10px;
-    color: aliceblue;
+    color: #f0f8ff;
 
 }
 
@@ -54,7 +54,8 @@ h4 {
 .headline {
     display: flex;
     flex-direction: column;
-    align-items: center;        
+    align-items: center;  
+    margin-top: 100px;      
 
 }
 
@@ -64,6 +65,53 @@ h4 {
     align-items: center;        
 
 }
+.topright { 
+    position: fixed;       /* stays in the same place on the screen */
+    top: 40px;             /* distance from top of the viewport */
+    right: 140px;           /* distance from right edge */
+    display: flex;
+    justify-content: flex-end;
+    color: aliceblue;
+    z-index: 1000;         /* ensures it stays above other content */
+    transition: transform 0.4s ease, opacity 0.4s ease;
+
+    
+}
+
+.texttopright {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;  
+    width: 154px;
+    font-family: "Questrial", sans-serif;
+    font-size: 20px;
+}
+
+
+
+.leapin {
+    width: 154px;
+    height: 44px;
+    background-color: #ff7f50;
+    border-radius: 15px;
+    border-style: hidden;
+    color: #f0f8ff;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    
+
+}
+
+/* Hover effect */
+.leapin:hover {
+    background-color: #0b0b0b; /* New color on hover */
+    color: white; /* Optional text color change */
+    cursor: grab;
+  }
 
 /* etusivun tekstilaatikot*/
 
@@ -198,7 +246,7 @@ h4 {
 
 
   
-  /* RESPONSIIVISUUS */  
+  /* RESPONSIIVISUUSASIAT alkaa */  
 
 
   @media screen and (min-width: 894px) {
@@ -221,11 +269,31 @@ h4 {
     }
   }
   
+    /* If the screen size is 893px wide or less, set the font-size of <div> to 30px */
   @media screen and (max-width: 893px) {
     div.headline-h2 {
       font-size: 3vw;
     }
   }
+
+
+  /* siirtää buttonin ja tekstin keskelle, When the screen width is below 768px (tablet/mobile) */
+@media (max-width: 768px) {
+    .topright {
+         left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        justify-content: center;
+    }
+
+    .texttopright {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+  /* RESPONSIIVISUUSASIAT loppuu */  
+
 
 
 
