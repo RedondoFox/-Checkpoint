@@ -68,7 +68,7 @@ h4 {
 .topright { 
     position: fixed;       /* stays in the same place on the screen */
     top: 40px;             /* distance from top of the viewport */
-    right: 140px;           /* distance from right edge */
+    right: 220px;           /* distance from right edge */
     display: flex;
     justify-content: flex-end;
     color: aliceblue;
@@ -86,6 +86,7 @@ h4 {
     width: 154px;
     font-family: "Questrial", sans-serif;
     font-size: 20px;
+    line-height: 1.4rem;
 }
 
 
